@@ -181,10 +181,6 @@ const Home = () => {
                     <span className={styles.statLabel}>Check-in Time</span>
                   </div>
                 </div>
-                <div className={styles.attendanceVisual}>
-                  <div className={styles.attendanceBar}></div>
-                  <div className={styles.attendanceIndicator}></div>
-                </div>
               </div>
             </div>
           </div>
@@ -200,14 +196,6 @@ const Home = () => {
               </div>
               <h3 className={styles.cardTitle}>Student Analytics</h3>
               <p className={styles.cardDescription}>Real-time insights into student performance and engagement patterns.</p>
-              <div className={styles.analyticsChart}>
-                <div className={styles.chartLine}></div>
-                <div className={styles.dataPoints}>
-                  <span className={styles.dataPoint}></span>
-                  <span className={styles.dataPoint}></span>
-                  <span className={styles.dataPoint}></span>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -328,17 +316,17 @@ const Home = () => {
               <div className={styles.metric}>
                 <div className={styles.metricValue}>94.2%</div>
                 <div className={styles.metricLabel}>Attendance Rate</div>
-                <div className={styles.metricTrend}>↗ +2.1%</div>
+                <div className={`${styles.metricTrend} ${styles.trendUp}`}>↗ +2.1%</div>
               </div>
               <div className={styles.metric}>
                 <div className={styles.metricValue}>87.5</div>
                 <div className={styles.metricLabel}>Avg Grade</div>
-                <div className={styles.metricTrend}>↗ +1.3</div>
+                <div className={`${styles.metricTrend} ${styles.trendUp}`}>↗ +1.3</div>
               </div>
               <div className={styles.metric}>
                 <div className={styles.metricValue}>156</div>
                 <div className={styles.metricLabel}>Active Courses</div>
-                <div className={styles.metricTrend}>→ 0%</div>
+                <div className={`${styles.metricTrend} ${styles.trendFlat}`}>→ 0%</div>
               </div>
             </div>
           </div>
