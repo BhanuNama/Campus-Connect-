@@ -1,0 +1,751 @@
+/* ====== FEE DETAILS - MODERN CAMPUS DESIGN ====== */
+
+/* Import Home.js design patterns */
+.homeContainer {
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, 
+    rgba(67, 56, 202, 0.02) 0%, 
+    rgba(139, 92, 246, 0.03) 50%, 
+    rgba(236, 72, 153, 0.02) 100%);
+  padding: var(--space-xl);
+}
+
+/* Section Headers */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  padding: var(--space-xl) 0;
+}
+
+.sectionTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-sm);
+}
+
+.sectionSubtitle {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Modern Bento Grid Layout */
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bentoItemLarge {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Feature Cards - Home.js Style */
+.featureCard {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(20px);
+}
+
+.featureCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(67, 56, 202, 0.05) 0%, 
+    rgba(139, 92, 246, 0.08) 50%, 
+    rgba(236, 72, 153, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.featureCard:hover::before {
+  opacity: 1;
+}
+
+.featureCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 64px rgba(67, 56, 202, 0.2);
+  border-color: rgba(67, 56, 202, 0.3);
+}
+
+.cardContent {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fee Status Card Enhancements */
+.fee-status-card.paid {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.fee-status-card.pending {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+/* Enhanced Status Icons */
+.status-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.fee-status-card:hover .status-icon {
+  transform: scale(1.05);
+}
+
+/* Fee Amount Display */
+.fee-amount {
+  margin: var(--space-xl) 0;
+  padding: var(--space-xl);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.amount-value {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary), #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card Headers */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid rgba(67, 56, 202, 0.1);
+}
+
+.card-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, rgba(67, 56, 202, 0.1), rgba(139, 92, 246, 0.15));
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover .card-icon {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, rgba(67, 56, 202, 0.2), rgba(139, 92, 246, 0.25));
+}
+
+/* Fee Details Grid */
+.fee-details-grid {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-lg);
+  flex: 1;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.detail-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Payment Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
+  color: white;
+  box-shadow: 0 4px 16px rgba(67, 56, 202, 0.3);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(67, 56, 202, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(67, 56, 202, 0.1);
+  color: var(--primary);
+  border: 1px solid rgba(67, 56, 202, 0.2);
+}
+
+.btn-secondary:hover {
+  background: rgba(67, 56, 202, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 50px;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.status-success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+/* Breakdown Items */
+.breakdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+}
+
+.breakdown-item:hover {
+  background: rgba(67, 56, 202, 0.05);
+  transform: translateX(4px);
+}
+
+.breakdown-item.total {
+  background: linear-gradient(135deg, rgba(67, 56, 202, 0.1), rgba(139, 92, 246, 0.15));
+  border: 1px solid rgba(67, 56, 202, 0.2);
+  font-weight: 600;
+  margin-top: var(--space-md);
+}
+
+/* Loading States */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: var(--space-lg);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(67, 56, 202, 0.1);
+  border-top: 3px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Animation */
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .bentoItemLarge {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
+  .bentoGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .homeContainer {
+    padding: var(--space-lg);
+  }
+  
+  .sectionTitle {
+    font-size: 2.5rem;
+  }
+  
+  .fee-details-grid {
+    flex-direction: column;
+  }
+  
+  .amount-value {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .featureCard {
+    padding: var(--space-lg);
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}
+
+/* Error and Empty States */
+.error-state,
+.empty-state {
+  text-align: center;
+  padding: var(--space-2xl);
+  background: var(--surface);
+  margin-top: var(--space-xl);
+}
+
+.error-icon,
+.empty-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+}
+
+.error-icon svg,
+.empty-icon svg {
+  width: 64px;
+  height: 64px;
+}
+
+/* Fee Grid Layout */
+.fee-grid {
+  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Card Components */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--border-light);
+}
+
+.card-title {
+  color: var(--text-primary);
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--primary-light);
+  border-radius: var(--radius-sm);
+  color: var(--primary);
+}
+
+/* Payment Actions Card */
+.payment-actions-card {
+  background: var(--surface);
+  transition: all var(--transition-base);
+}
+
+.payment-actions-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.payment-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-description {
+  line-height: 1.6;
+}
+
+.payment-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Fee Breakdown Card */
+.fee-breakdown-card {
+  background: var(--surface);
+  transition: all var(--transition-base);
+}
+
+.fee-breakdown-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.breakdown-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.breakdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--surface-hover);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.breakdown-item:hover {
+  background: var(--primary-light);
+}
+
+.breakdown-item.total {
+  background: var(--primary-light);
+  border: 2px solid var(--primary);
+  font-weight: 600;
+}
+
+.breakdown-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.breakdown-amount {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.breakdown-item.total .breakdown-label,
+.breakdown-item.total .breakdown-amount {
+  color: var(--primary);
+}
+
+/* Help & Support Card */
+.help-support-card {
+  background: var(--surface);
+  transition: all var(--transition-base);
+}
+
+.help-support-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.help-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.help-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm);
+  background: var(--surface-hover);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.help-item:hover {
+  background: var(--primary-light);
+  transform: translateX(4px);
+}
+
+.help-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--primary-light);
+  border-radius: var(--radius-sm);
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.help-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.help-label {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.help-value {
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--text-on-primary);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-hover);
+  border-color: var(--primary);
+}
+
+.w-full {
+  width: 100%;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .fee-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .fee-status-header {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-md);
+  }
+  
+  .fee-details-grid {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .detail-item {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  
+  .page-header h1 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .amount-value {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .fee-status-card {
+    padding: var(--space-md);
+  }
+  
+  .fee-amount {
+    padding: var(--space-md);
+  }
+  
+  .detail-item {
+    padding: var(--space-sm);
+  }
+  
+  .card-header {
+    flex-direction: column;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+  
+  .payment-buttons {
+    gap: var(--space-sm);
+  }
+}
+
+/* Focus States for Accessibility */
+.breakdown-item:focus,
+.help-item:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .breakdown-item,
+  .help-item,
+  .detail-item {
+    border-width: 2px;
+  }
+  
+  .fee-status-card {
+    border-width: 3px;
+  }
+  
+  .status-badge {
+    border-width: 2px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .breakdown-item,
+  .help-item,
+  .detail-item,
+  .payment-actions-card,
+  .fee-breakdown-card,
+  .help-support-card,
+  .btn {
+    transition: none;
+  }
+  
+  .fade-in {
+    animation: none;
+  }
+  
+  .loading-spinner {
+    animation: none;
+  }
+  
+  .overdue-badge {
+    animation: none;
+  }
+}
+  
