@@ -39,13 +39,9 @@ const Home = () => {
     <div className={styles.homeContainer}>
       {/* Modern Navigation */}
       <nav className={`${styles.navbar} ${isScrolled ? styles.navbarScrolled : ''}`}>
-        <div className={styles.navBrand}>
+        <div className={styles.navBrand} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}>
           <div className={styles.brandIcon}>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <img src="/images/Logo.jpg" alt="Campus Connect Logo" width="32" height="32" style={{ borderRadius: '4px', objectFit: 'cover' }} />
           </div>
           <h1 className={styles.brandTitle}>CampusConnect</h1>
         </div>
@@ -418,13 +414,9 @@ const Home = () => {
       {/* Footer */}
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
-          <div className={styles.footerBrand}>
+          <div className={styles.footerBrand} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}>
             <div className={styles.brandIcon}>
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <img src="/images/Logo.jpg" alt="Campus Connect Logo" width="28" height="28" style={{ borderRadius: '4px', objectFit: 'cover' }} />
             </div>
             <h3>CampusConnect</h3>
           </div>

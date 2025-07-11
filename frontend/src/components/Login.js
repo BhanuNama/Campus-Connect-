@@ -16,6 +16,15 @@ const Login = () => {
     setError(null); // Clear any existing error message on toggle
   };
 
+  const handleLogoClick = () => {
+    // Navigate based on current portal type
+    if (isTeacher) {
+      navigate('/teacher-home');
+    } else {
+      navigate('/student-home');
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -85,13 +94,9 @@ const Login = () => {
         <div className="login-card">
           {/* Header Section */}
           <div className="login-header">
-            <div className="brand-section">
+            <div className="brand-section" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
               <div className="brand-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <img src="/images/Logo.jpg" alt="Campus Connect Logo" width="32" height="32" style={{ borderRadius: '4px', objectFit: 'cover' }} />
               </div>
               <h1 className="brand-title">CampusConnect</h1>
             </div>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from './StudentHome.module.css';
 
 const StudentHome = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [userName, setUserName] = useState('Student');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -119,6 +120,30 @@ const StudentHome = () => {
 
   return (
     <div className={`${styles.studentHome} ${styles.fadeIn}`}>
+      {/* Navigation Header */}
+      <nav className={styles.navbar}>
+        <div className={styles.navBrand} onClick={() => navigate('/student-home')} style={{ cursor: 'pointer' }}>
+          <div className={styles.brandIcon}>
+            <img src="/images/Logo.jpg" alt="Campus Connect Logo" width="32" height="32" style={{ borderRadius: '4px', objectFit: 'cover' }} />
+          </div>
+          <h1 className={styles.brandTitle}>CampusConnect</h1>
+        </div>
+        <div className={styles.navActions}>
+          <Link to="/profile" className={styles.navButton}>
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+            </svg>
+            Profile
+          </Link>
+          <button onClick={() => { localStorage.clear(); navigate('/login'); }} className={styles.navButton}>
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd" />
+            </svg>
+            Logout
+          </button>
+        </div>
+      </nav>
+
       {/* Hero Section */}
       <div className={styles.heroSection}>
         <div className={styles.greetingContent}>
