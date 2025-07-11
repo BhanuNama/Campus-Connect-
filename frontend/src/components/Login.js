@@ -186,9 +186,9 @@ const Login = () => {
             </div>
 
             <div className="form-options">
-              <a href="#" className="forgot-link">
+              <button type="button" className="forgot-link">
                 Forgot password?
-              </a>
+              </button>
             </div>
 
             <button 

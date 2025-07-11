@@ -68,7 +68,7 @@ const TeacherMarkAttendance = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post('/api/teachers/mark-attendance', attendanceData);
+      await axios.post('/api/teachers/mark-attendance', attendanceData);
       setSuccess('Attendance marked successfully!');
       setError('');
       // Reset the form

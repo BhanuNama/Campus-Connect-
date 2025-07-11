@@ -40,7 +40,7 @@ const EnrollResults = () => {
     console.log("Data being sent to backend:", resultData);
 
     try {
-      const response = await axios.post('/api/teachers/enroll-results', resultData);
+      await axios.post('/api/teachers/enroll-results', resultData);
       setSuccess('Result enrolled successfully!');
       setError('');
       // Reset form
