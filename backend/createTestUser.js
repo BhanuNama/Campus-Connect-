@@ -1,52 +1,100 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const dotenv = require('dotenv');
-const Student = require('./models/Student'); // Adjust the path if necessary
+const config = require('./config');
+const Student = require('./models/Student');
+const Teacher = require('./models/Teacher');
 
-dotenv.config();
-
-const createTestUser = async () => {
+const createTestUsers = async () => {
     try {
         // Connect to MongoDB Atlas
-        const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/campusconnect';
-        
-        await mongoose.connect(MONGODB_URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-
+        await mongoose.connect(config.mongoUri);
         console.log('✅ Connected to MongoDB Atlas');
 
-        // Password to be hashed
-        const password = 'test_password'; // The plain text password
-        const hashedPassword = await bcrypt.hash(password, 10); // Hash the password
+        // Clear existing test users
+        await Student.deleteMany({ rollNumber: { $in: ['test123', 'student1'] } });
+        await Teacher.deleteMany({ teacherId: { $in: ['teacher1', 'prof001'] } });
+        console.log('🧹 Cleared existing test users');
 
-        // Create a new student user
-        const newUser = new Student({
-            name: 'Test Student',
-            rollNumber: 'test_roll_number',
-            password: hashedPassword,
-            email: 'test@student.com',
-            dateOfBirth: new Date('2000-01-01'),
-            contactNumber: '1234567890',
-            // You can add more fields as needed
-        });
+        // Create test student users
+        const testStudents = [
+            {
+                name: 'Test Student',
+                rollNumber: 'test123',
+                password: 'password123',
+                email: 'test@student.com',
+                dateOfBirth: new Date('2000-01-01'),
+                contactNumber: '1234567890',
+                coursesEnrolled: 'Computer Science',
+                address: {
+                    street: '123 Test St',
+                    city: 'Test City',
+                    state: 'Test State',
+                    zip: '12345'
+                }
+            },
+            {
+                name: 'John Student',
+                rollNumber: 'student1',
+                password: 'student123',
+                email: 'john@student.com',
+                dateOfBirth: new Date('1999-05-15'),
+                contactNumber: '9876543210',
+                coursesEnrolled: 'Computer Science',
+                address: {
+                    street: '456 College Ave',
+                    city: 'University Town',
+                    state: 'Academic State',
+                    zip: '67890'
+                }
+            }
+        ];
 
-        // Save the new user to the database
-        await newUser.save();
-        console.log('✅ Test user created successfully:', {
-            name: newUser.name,
-            rollNumber: newUser.rollNumber,
-            email: newUser.email
-        });
+        const createdStudents = await Student.insertMany(testStudents);
+        console.log('✅ Test students created:', createdStudents.map(s => ({ name: s.name, rollNumber: s.rollNumber })));
+
+        // Create test teacher users
+        const testTeachers = [
+            {
+                name: 'Prof. Test Teacher',
+                teacherId: 'teacher1',
+                password: 'teacher123',
+                email: 'teacher@college.com',
+                department: 'Computer Science',
+                dateOfJoining: new Date('2020-01-01'),
+                contact: '1112223333',
+                coursesTaught: ['Data Structures', 'Algorithms'],
+                bio: 'Test teacher for the system'
+            },
+            {
+                name: 'Dr. Jane Professor',
+                teacherId: 'prof001',
+                password: 'prof123',
+                email: 'jane@college.com',
+                department: 'Mathematics',
+                dateOfJoining: new Date('2018-07-15'),
+                contact: '4445556666',
+                coursesTaught: ['Calculus', 'Linear Algebra'],
+                bio: 'Mathematics professor'
+            }
+        ];
+
+        const createdTeachers = await Teacher.insertMany(testTeachers);
+        console.log('✅ Test teachers created:', createdTeachers.map(t => ({ name: t.name, teacherId: t.teacherId })));
+
+        console.log('\n🎉 Test users created successfully!');
+        console.log('\n📋 Login Credentials:');
+        console.log('STUDENTS:');
+        console.log('- Roll Number: test123, Password: password123');
+        console.log('- Roll Number: student1, Password: student123');
+        console.log('\nTEACHERS:');
+        console.log('- Teacher ID: teacher1, Password: teacher123');
+        console.log('- Teacher ID: prof001, Password: prof123');
         
     } catch (error) {
-        console.error('❌ Error creating user:', error.message);
+        console.error('❌ Error creating users:', error.message);
     } finally {
-        // Disconnect from MongoDB
         await mongoose.disconnect();
         console.log('🔌 Disconnected from MongoDB');
     }
 };
 
-createTestUser();
+createTestUsers();
